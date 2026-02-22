@@ -3,156 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VuTungToolHEX | Mobile Pro Max</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>VuTungToolHEX | Mobile Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #050508;
-            --panel-bg: rgba(12, 12, 16, 0.65);
-            --panel-border: rgba(255, 255, 255, 0.08);
-            --accent-1: #6366f1; /* Tím nhạt */
-            --accent-2: #00d2ff; /* Xanh lơ */
-            --text-main: #f8f9fa;
-            --text-dim: #8b8b99;
-            --success: #00fa9a;
-            --danger: #ff4757;
-            --card-bg: rgba(25, 25, 35, 0.4);
+            --bg: #050505;
+            --panel: #111;
+            --accent: #00d2ff;
+            --accent-glow: rgba(0, 210, 255, 0.4);
+            --text-main: #f0f0f0;
+            --text-dim: #888;
+            --border: #333;
+            --success: #00ff9d;
         }
 
-        * { 
-            box-sizing: border-box; 
-            outline: none; 
-            -webkit-tap-highlight-color: transparent; 
-        }
+        * { box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
         
         body {
-            background-color: var(--bg-dark);
-            /* Nền lưới Grid Hi-tech + Glow góc */
-            background-image: 
-                radial-gradient(circle at 10% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 90% 100%, rgba(0, 210, 255, 0.12) 0%, transparent 50%),
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 24px 24px, 24px 24px;
+            background: var(--bg);
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
             margin: 0;
-            padding: 20px 15px;
+            padding: 20px 10px;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
+            overflow-x: hidden;
         }
 
         /* Container Chính */
         .app-wrapper {
             width: 100%;
-            max-width: 850px;
-            background: var(--panel-bg);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid var(--panel-border);
-            border-radius: 24px;
-            /* Bóng đổ đa tầng tạo chiều sâu */
-            box-shadow: 
-                0 30px 60px -15px rgba(0, 0, 0, 0.😎,
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
             position: relative;
-        }
-
-        /* Line Gradient mỏng trên cùng */
-        .app-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-1), var(--accent-2), transparent);
-            opacity: 0.5;
         }
 
         /* Header */
         .app-header {
-            padding: 20px 25px;
+            padding: 20px;
             background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
-            border-bottom: 1px solid var(--panel-border);
+            border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        .brand { display: flex; align-items: center; gap: 12px; }
-        .brand-icon { 
-            width: 28px; 
-            height: 28px; 
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); 
-            border-radius: 8px; 
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4); 
-            position: relative;
-        }
-        /* Chấm nháy bên trong icon */
-        .brand-icon::after {
-            content: ''; position: absolute; top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 8px; height: 8px; background: #fff; border-radius: 50%;
-            box-shadow: 0 0 10px #fff;
-        }
-
-        .brand-name { 
-            font-weight: 700; 
-            font-size: 1.15rem; 
-            letter-spacing: 0.5px; 
-        }
+        .brand { display: flex; align-items: center; gap: 10px; }
+        .brand-icon { width: 24px; height: 24px; background: var(--accent); border-radius: 6px; box-shadow: 0 0 10px var(--accent-glow); }
+        .brand-name { font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
 
         /* File Info Bar */
         .file-info {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--accent-2);
-            background: rgba(0, 210, 255, 0.08);
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            padding: 6px 14px;
-            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--accent);
+            background: rgba(0, 210, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            max-width: 180px;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.1);
+            max-width: 150px;
         }
 
-        /* File Upload Zone */
-        #dropZone {
-            border: 2px dashed rgba(255, 255, 255, 0.12);
-            background: rgba(0, 0, 0, 0.2);
-            padding: 45px 20px;
-            text-align: center;
-            margin: 25px;
-            border-radius: 16px;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Mượt như lò xo */
-        }
-        
-        #dropZone:hover {
-            border-color: var(--accent-2);
-            background: rgba(0, 210, 255, 0.03);
-            transform: scale(1.02);
-        }
-
-        .drop-icon {
-            font-size: 2.8rem;
-            margin-bottom: 12px;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
-            transition: transform 0.3s;
-        }
-        #dropZone:hover .drop-icon { transform: translateY(-5px); }
-
-        .drop-title { font-weight: 600; font-size: 1.1rem; color: #fff; }
-        .drop-desc { font-size: 0.85rem; color: var(--text-dim); margin-top: 8px; }
-
-        /* Control Panel */
+        /* Control Panel - Mobile First Design */
         .control-panel {
-            padding: 0 25px 25px 25px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -161,204 +80,113 @@
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 12px;
+            gap: 10px;
+            background: #000;
+            padding: 15px;
             border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+            border: 1px solid var(--border);
         }
 
-        .mode-row { display: flex; gap: 10px; }
+        .mode-row {
+            display: flex;
+            gap: 10px;
+        }
 
         select, input {
-            background: var(--card-bg);
-            border: 1px solid transparent;
+            background: #1a1a1a;
+            border: 1px solid var(--border);
             color: var(--text-main);
-            padding: 14px 18px;
-            border-radius: 12px;
+            padding: 12px;
+            border-radius: 8px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
         
-        select { 
-            flex: 1; 
-            -webkit-appearance: none; 
-            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2300d2ff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); 
-            background-repeat: no-repeat; 
-            background-position: right 15px top 50%; 
-            background-size: 10px; 
-            cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
+        select { flex: 1; -webkit-appearance: none; background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2300d2ff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); background-repeat: no-repeat; background-position: right 10px top 50%; background-size: 10px; }
         
-        select:focus, input:focus {
-            background: rgba(0, 0, 0, 0.6);
-            border-color: var(--accent-1);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-        }
-        input { width: 100%; border: 1px solid rgba(255, 255, 255, 0.08); }
-        input::placeholder { color: #555; font-family: 'Plus Jakarta Sans', sans-serif; }
+        input { width: 100%; border: 1px solid var(--border); transition: border 0.3s; }
+        input:focus { border-color: var(--accent); }
 
-        /* Nút MÒ Ultra Pro */
         .scan-btn {
-            background: linear-gradient(45deg, var(--accent-1), var(--accent-2), var(--accent-1));
-            background-size: 200% auto;
-            color: #fff;
+            background: var(--accent);
+            color: #000;
             border: none;
-            padding: 16px;
-            border-radius: 14px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 1.5px;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1rem;
             text-transform: uppercase;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
-            transition: all 0.3s ease;
-            animation: shine 3s linear infinite; /* Animation LED chạy */
+            box-shadow: 0 4px 15px var(--accent-glow);
+            active: transform: scale(0.98);
         }
-        
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
-
-        .scan-btn:hover {
-            box-shadow: 0 12px 25px rgba(0, 210, 255, 0.4);
-            transform: translateY(-2px) scale(1.01);
-        }
-        .scan-btn:active { transform: translateY(1px); }
 
         /* Progress Bar */
         .progress-container {
-            height: 3px;
-            background: rgba(255,255,255,0.05);
+            height: 4px;
+            background: #222;
             width: 100%;
+            margin-top: 5px;
             display: none;
-            overflow: hidden;
         }
         .progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, var(--accent-1), var(--success));
+            background: var(--success);
             width: 0%;
-            transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: width 0.1s linear;
             box-shadow: 0 0 10px var(--success);
         }
 
         /* Results Area */
         .results-container {
-            padding: 0 25px 25px;
-            background: rgba(0, 0, 0, 0.3);
-            min-height: 250px;
-            max-height: 480px;
+            padding: 0 20px 20px;
+            background: #080808;
+            min-height: 300px;
+            max-height: 500px;
             overflow-y: auto;
-            border-top: 1px solid var(--panel-border);
-            box-shadow: inset 0 10px 20px -10px rgba(0,0,0,0.5);
         }
 
-        .results-container::-webkit-scrollbar { width: 4px; }
-        .results-container::-webkit-scrollbar-track { background: transparent; }
-        .results-container::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
-        .results-container::-webkit-scrollbar-thumb:hover { background: var(--accent-2); }
-
         .result-header {
-            margin: 20px 0 15px 0;
-            font-size: 0.85rem;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            font-size: 0.8rem;
             color: var(--text-dim);
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            font-weight: 500;
-            padding-bottom: 10px;
-            border-bottom: 1px dashed rgba(255,255,255,0.1);
-        }
-
-        /* Thẻ kết quả - Thêm Animation xuất hiện */
-        @keyframes slideUpFade {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .result-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-left: 3px solid var(--accent-1);
-            padding: 16px;
-            margin-bottom: 12px;
-            border-radius: 12px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-            animation: slideUpFade 0.4s ease forwards; /* Áp dụng Animation */
-        }
-        
-        .result-card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-left-color: var(--success);
-            transform: translateX(4px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .offset-label { 
-            color: var(--text-dim); 
-            font-size: 0.75rem; 
-            display: flex; 
-            justify-content: space-between;
-            margin-bottom: 10px; 
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-        
-        .hex-preview { 
-            color: var(--accent-2); 
-            word-break: break-all; 
-            margin-bottom: 10px; 
-            line-height: 1.6;
-            background: rgba(0,0,0,0.4);
-            padding: 10px;
+            background: #111;
+            border: 1px solid #222;
+            border-left: 3px solid var(--accent);
+            padding: 15px;
+            margin-bottom: 10px;
             border-radius: 8px;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
-        }
-        
-        .ascii-preview { 
-            color: #d1d1e0; 
-            font-size: 0.8rem; 
-            word-break: break-all; 
-            background: rgba(255,255,255,0.03); 
-            padding: 8px 10px; 
-            border-radius: 6px; 
-            border: 1px solid rgba(255,255,255,0.02);
-            line-height: 1.5;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
         }
 
-        .status-msg {
+        .offset-label { color: var(--text-dim); font-size: 0.7rem; display: block; margin-bottom: 5px; }
+        .hex-preview { color: var(--accent); word-break: break-all; margin-bottom: 5px; }
+        .ascii-preview { color: #fff; opacity: 0.7; font-size: 0.75rem; word-break: break-all; background: #222; padding: 5px; border-radius: 4px; }
+
+        /* File Upload Zone */
+        #dropZone {
+            border: 2px dashed #333;
+            padding: 40px 20px;
             text-align: center;
-            color: var(--text-dim);
-            padding-top: 60px;
-            font-size: 0.95rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
+            margin: 20px;
+            border-radius: 16px;
+            cursor: pointer;
         }
+        #dropZone.active { border-color: var(--accent); background: rgba(0, 210, 255, 0.05); }
 
-        .pulse-icon {
-            font-size: 2.2rem;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 1; text-shadow: 0 0 15px var(--accent-2); }
-            100% { transform: scale(1); opacity: 0.5; }
-        }
-
-        /* Media Queries */
+        /* Media Queries cho Desktop/Tablet */
         @media (min-width: 768px) {
             .control-panel { flex-direction: row; align-items: flex-end; }
-            .input-group { flex: 1; flex-direction: row; align-items: center; padding: 10px; border-radius: 14px;}
-            .mode-row { min-width: 160px; }
-            .scan-btn { width: 140px; padding: 0; height: 50px; }
+            .input-group { flex: 1; flex-direction: row; align-items: center; }
+            .mode-row { min-width: 150px; }
+            .scan-btn { width: auto; padding: 0 40px; height: 50px; }
         }
     </style>
 </head>
@@ -368,15 +196,15 @@
     <header class="app-header">
         <div class="brand">
             <div class="brand-icon"></div>
-            <div class="brand-name">HEX Tool <span style="font-weight:400; font-size:0.8rem; color:var(--text-dim)">(cre:VuTungIOS)</span></div>
+            <div class="brand-name">Tool Check Mã HEX(cre:VuTungIOS)</div>
         </div>
         <div id="fileInfo" class="file-info" style="display:none;"></div>
     </header>
 
     <div id="dropZone" onclick="document.getElementById('fileInput').click()">
-        <div class="drop-icon">🧊</div>
-        <div class="drop-title">Thả file hoặc chạm để chọn</div>
-        <div class="drop-desc">Hỗ trợ Dylib, Bin, Hex, Txt...</div>
+        <div style="font-size: 2rem; margin-bottom: 10px;">📂</div>
+        <div style="font-weight: 600;">Chạm để chọn File</div>
+        <div style="font-size: 0.8rem; color: #666; margin-top: 5px;">Hỗ trợ mọi định dạng (Dylib, Hex,Txt...)</div>
         <input type="file" id="fileInput" hidden>
     </div>
 
@@ -384,11 +212,11 @@
         <div class="input-group">
             <div class="mode-row">
                 <select id="scanMode">
-                    <option value="text">STRING</option>
+                    <option value="text">Mã(STRING)</option>
                     <option value="hex">HEX</option>
                 </select>
             </div>
-            <input type="text" id="queryInput" placeholder="Nhập dữ liệu cần mò..." autocomplete="off">
+            <input type="text" id="queryInput" placeholder="Nhập dữ liệu...">
         </div>
         <button class="scan-btn" onclick="startDeepScan()">MÒ</button>
     </div>
@@ -398,15 +226,13 @@
     </div>
 
     <div class="results-container" id="resultsArea">
-        <div class="status-msg">
-            <span class="pulse-icon">⚡</span>
-            <span>Hệ thống sẵn sàng.</span>
+        <div style="text-align: center; color: #444; padding-top: 50px;">
+            Sẵn sàng quét dữ liệu.
         </div>
     </div>
 </div>
 
 <script>
-    // --- GIỮ NGUYÊN 100% CODE LOGIC CỦA BẠN ---
     let fileBuffer = null;
     let isScanning = false;
 
@@ -426,9 +252,9 @@
             info.textContent = ${file.name} (${formatBytes(file.size)});
             
             document.getElementById('resultsArea').innerHTML = `
-                <div class="status-msg">
-                    <span style="color: var(--success); font-weight: 600; font-size: 1.1rem;">Đã nạp tệp: ${formatBytes(file.size)}</span>
-                    <span style="color: var(--text-dim)">Sẵn sàng thực thi Deep Scan.</span>
+                <div style="text-align: center; color: var(--accent); padding-top: 50px;">
+                    File: ${formatBytes(file.size)}<br>
+                    Sẵn sàng Check.
                 </div>`;
         };
         reader.readAsArrayBuffer(file);
@@ -461,7 +287,7 @@
         // 2. Thiết lập giao diện quét
         isScanning = true;
         const resultsArea = document.getElementById('resultsArea');
-        resultsArea.innerHTML = '<div class="result-header">Đang chạy thuật toán Deep Scan...</div>';
+        resultsArea.innerHTML = '<div class="result-header">Đang khởi tạo Deep Scan...</div>';
         const progressBar = document.getElementById('progressBar');
         const progressContainer = document.getElementById('progressContainer');
         progressContainer.style.display = 'block';
@@ -521,17 +347,17 @@
     function finishScan(count, html) {
         isScanning = false;
         const resultsArea = document.getElementById('resultsArea');
-        const limitMsg = count > 50 ? <small style="color:var(--accent-2); font-weight:normal">(Hiển thị 50/${count})</small> : '';
+        const limitMsg = count > 50 ? <br><small>(Chỉ hiển thị 50/${count} kết quả để tối ưu hiệu năng)</small> : '';
         
         const header = `
             <div class="result-header">
-                <span style="color: var(--success); text-shadow: 0 0 10px rgba(0,250,154,0.4)">✔ HOÀN TẤT</span>
-                <span>TÌM THẤY: <b style="color: #fff; font-size: 1rem;">${count}</b> VỊ TRÍ ${limitMsg}</span>
+                <span style="color: var(--success)">✔ HOÀN TẤT</span>
+                <span>TÌM THẤY: <b style="color: #fff">${count}</b> VỊ TRÍ${limitMsg}</span>
             </div>
         `;
         
         if (count === 0) {
-            resultsArea.innerHTML = header + <div class="status-msg">Không tìm thấy dữ liệu khớp.</div>;
+            resultsArea.innerHTML = header + <div style="text-align:center; padding:20px; color:#666">Không tìm thấy dữ liệu khớp 100%.</div>;
         } else {
             resultsArea.innerHTML = header + html;
         }
@@ -565,7 +391,7 @@
             const a = (byte >= 32 && byte <= 126) ? String.fromCharCode(byte) : '.';
 
             if(isMatch) {
-                hexStr += <span style="color: var(--success); font-weight:bold; text-shadow: 0 0 8px rgba(0,250,154,0.4)">${h}</span> ;
+                hexStr += <span style="color: var(--success); font-weight:bold">${h}</span> ;
                 asciiStr += <span style="color: var(--success); font-weight:bold">${escapeHtml(a)}</span>;
             } else {
                 hexStr += <span style="color: #555">${h}</span> ;
@@ -575,10 +401,7 @@
 
         return `
             <div class="result-card">
-                <div class="offset-label">
-                    <span>OFFSET: <span style="color:#fff">${offsetHex}</span></span>
-                    <span style="color:#666">DEC: ${offsetDec}</span>
-                </div>
+                <span class="offset-label">OFFSET: ${offsetHex} (Dec: ${offsetDec})</span>
                 <div class="hex-preview">${hexStr}</div>
                 <div class="ascii-preview">${asciiStr}</div>
             </div>
