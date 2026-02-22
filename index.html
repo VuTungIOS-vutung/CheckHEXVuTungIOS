@@ -249,7 +249,7 @@
             document.getElementById('dropZone').style.display = 'none';
             const info = document.getElementById('fileInfo');
             info.style.display = 'block';
-            info.textContent = ${file.name} (${formatBytes(file.size)});
+            info.textContent = `${file.name} (${formatBytes(file.size)})`;
             
             document.getElementById('resultsArea').innerHTML = `
                 <div style="text-align: center; color: var(--accent); padding-top: 50px;">
@@ -347,7 +347,7 @@
     function finishScan(count, html) {
         isScanning = false;
         const resultsArea = document.getElementById('resultsArea');
-        const limitMsg = count > 50 ? <br><small>(Chỉ hiển thị 50/${count} kết quả để tối ưu hiệu năng)</small> : '';
+        const limitMsg = count > 50 ? `<br><small>(Chỉ hiển thị 50/${count} kết quả để tối ưu hiệu năng)</small>` : '';
         
         const header = `
             <div class="result-header">
@@ -357,7 +357,7 @@
         `;
         
         if (count === 0) {
-            resultsArea.innerHTML = header + <div style="text-align:center; padding:20px; color:#666">Không tìm thấy dữ liệu khớp 100%.</div>;
+            resultsArea.innerHTML = header + `<div style="text-align:center; padding:20px; color:#666">Không tìm thấy dữ liệu khớp 100%.</div>`;
         } else {
             resultsArea.innerHTML = header + html;
         }
@@ -391,10 +391,10 @@
             const a = (byte >= 32 && byte <= 126) ? String.fromCharCode(byte) : '.';
 
             if(isMatch) {
-                hexStr += <span style="color: var(--success); font-weight:bold">${h}</span> ;
-                asciiStr += <span style="color: var(--success); font-weight:bold">${escapeHtml(a)}</span>;
+                hexStr += `<span style="color: var(--success); font-weight:bold">${h}</span> `;
+                asciiStr += `<span style="color: var(--success); font-weight:bold">${escapeHtml(a)}</span>`;
             } else {
-                hexStr += <span style="color: #555">${h}</span> ;
+                hexStr += `<span style="color: #555">${h}</span> `;
                 asciiStr += escapeHtml(a);
             }
         }
